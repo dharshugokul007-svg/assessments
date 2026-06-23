@@ -35,7 +35,7 @@ B -- D : Cost = 5
 
 
 
-2.)
+2.) manufacturing resource Allocation
 products = ["A", "B", "C", "D"]
 investment = [20000, 30000, 40000, 50000]
 profit = [25000, 40000, 50000, 65000]
