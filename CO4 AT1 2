@@ -1,0 +1,42 @@
+def find(parent, i):
+    if parent[i] == i:
+        return i
+    return find(parent, parent[i])
+
+def union(parent, x, y):
+    xroot = find(parent, x)
+    yroot = find(parent, y)
+    parent[xroot] = yroot
+
+def kruskal(vertices, edges):
+    edges.sort(key=lambda x: x[2])
+
+    parent = [i for i in range(vertices)]
+
+    mst_weight = 0
+    mst = []
+
+    for u, v, w in edges:
+        x = find(parent, u)
+        y = find(parent, v)
+
+        if x != y:
+            mst.append((u, v, w))
+            mst_weight += w
+            union(parent, x, y)
+
+    print("Edges in MST:")
+    for u, v, w in mst:
+        print(f"{u} - {v} : {w}")
+
+    print("Total Weight =", mst_weight)
+
+edges = [
+    (0,1,2),
+    (0,2,3),
+    (1,2,1),
+    (1,3,4),
+    (2,3,5)
+]
+
+kruskal(4, edges)
